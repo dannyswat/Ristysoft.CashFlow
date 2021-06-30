@@ -20,7 +20,7 @@
             </div>
 			<div class="form-group">
 				<label asp-for="Revenue.Date" class="control-label"></label>
-				<input asp-for="Revenue.Date" class="form-control" value="@DateTime.Today" />
+				<input asp-for="Revenue.Date" class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
 				<span asp-validation-for="Revenue.Date" class="text-danger"></span>
 			</div>
             <div class="form-group">
