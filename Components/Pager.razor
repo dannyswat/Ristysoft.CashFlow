@@ -1,0 +1,52 @@
+﻿@using Ristysoft.CashFlow.ViewModels
+@if (PageModel != null && PageModel.PagesCount > 0)
+{
+<nav>
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="@(PageModel.CurrentPage > 1 ? $"javascript:updateSearchQuery('Page', {PageModel.CurrentPage - 1})" : "")">Prev</a>
+        </li>
+        @if (PageModel.CurrentPage > 1 + showPagesCount)
+        {
+            <li class="page-item">
+                <a class="page-link" href="javascript:updateSearchQuery('Page', 1)">1</a>
+            </li>
+            @if (PageModel.CurrentPage > 2 + showPagesCount)
+            {
+                <li class="page-item"><a class="page-link">...</a></li>
+            }
+        }
+        @for (int i = Math.Max(1, PageModel.CurrentPage - showPagesCount); i <= Math.Min(PageModel.PagesCount, PageModel.CurrentPage + showPagesCount); i++)
+        {
+            if (i == PageModel.CurrentPage)
+            {
+                <li class="page-item active"><a class="page-link">@i</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="javascript:updateSearchQuery('Page', @i)">@i</a></li>
+            }
+        }
+        @if (PageModel.CurrentPage < PageModel.PagesCount - showPagesCount)
+        {
+            @if (PageModel.CurrentPage < PageModel.PagesCount - showPagesCount - 1)
+            {
+                <li class="page-item"><a class="page-link">...</a></li>
+}
+            <li class="page-item">
+                <a class="page-link" href="javascript:updateSearchQuery('Page', @PageModel.PagesCount)">@PageModel.PagesCount</a>
+            </li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="@(PageModel.CurrentPage < PageModel.PagesCount ? $"javascript:updateSearchQuery('Page', {PageModel.CurrentPage + 1})" : "")">Next</a>
+        </li>
+    </ul>
+</nav>
+}
+
+@code {
+    int showPagesCount = 2;
+
+    [Parameter]
+    public PagerViewModel PageModel { get; set; }
+}

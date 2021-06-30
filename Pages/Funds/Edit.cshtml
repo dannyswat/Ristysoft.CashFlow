@@ -1,0 +1,45 @@
+﻿@page
+@model Ristysoft.CashFlow.Pages.Funds.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Fund</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Fund.Id" />
+            <div class="form-group">
+                <label asp-for="Fund.Name" class="control-label"></label>
+                <input asp-for="Fund.Name" class="form-control" />
+                <span asp-validation-for="Fund.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fund.Balance" class="control-label"></label>
+                <input asp-for="Fund.Balance" class="form-control" />
+                <span asp-validation-for="Fund.Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Fund.Disabled" /> @Html.DisplayNameFor(model => model.Fund.Disabled)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

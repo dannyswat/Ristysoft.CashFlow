@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ristysoft.CashFlow", "Ristysoft.CashFlow.csproj", "{84A7724A-241B-45BE-9A2F-501D72D7F31E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84A7724A-241B-45BE-9A2F-501D72D7F31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A7724A-241B-45BE-9A2F-501D72D7F31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A7724A-241B-45BE-9A2F-501D72D7F31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A7724A-241B-45BE-9A2F-501D72D7F31E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1CEF0E0-FDE1-4CD7-A914-FE327A5D73ED}
+	EndGlobalSection
+EndGlobal
