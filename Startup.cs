@@ -29,7 +29,7 @@ namespace Ristysoft.CashFlow
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(
+				options.UseSqlite(
 					Configuration.GetConnectionString("DefaultConnection")));
 			services.AddDatabaseDeveloperPageExceptionFilter();
 			services.AddDefaultIdentity<IdentityUser>(options =>
