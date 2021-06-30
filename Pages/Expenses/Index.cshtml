@@ -22,12 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ItemList.Items[0].Amount)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemList.Items[0].PaidBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemList.Items[0].Remark)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -43,12 +37,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PaidBy.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Remark)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
