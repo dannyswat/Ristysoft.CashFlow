@@ -9,3 +9,19 @@
 	<a class="btn btn-outline-primary btn-block my-2" asp-page="/Expenses/Index">Add Expenses</a>
 	<a class="btn btn-outline-primary btn-block my-2" asp-page="/Revenues/Index">Add Revenues</a>
 </div>
+<div class="row text-center">
+	<div class="col-sm-6">
+		<div class="card" style="width: 100%;">
+			<div class="card-body">
+				<h5 class="card-title">Expenses this month: $@ViewBag.ThisMonthExpense</h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="card" style="width: 100%;">
+			<div class="card-body">
+				<h5 class="card-title">Expenses last month: $@ViewBag.LastMonthExpense</h5>
+			</div>
+		</div>
+	</div>
+</div>
