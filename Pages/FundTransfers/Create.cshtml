@@ -1,0 +1,47 @@
+﻿@page
+@model Ristysoft.CashFlow.Pages.FundTransfers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Fund Transfer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FundTransfer.Date" class="control-label"></label>
+                <input asp-for="FundTransfer.Date" class="form-control" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="FundTransfer.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundTransfer.FromFundId" class="control-label"></label>
+                <select asp-for="FundTransfer.FromFundId" class ="form-control" asp-items="SelectLists.FundList().Nullable()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundTransfer.ToFundId" class="control-label"></label>
+                <select asp-for="FundTransfer.ToFundId" class ="form-control" asp-items="SelectLists.FundList().Nullable()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundTransfer.Amount" class="control-label"></label>
+                <input asp-for="FundTransfer.Amount" class="form-control" />
+                <span asp-validation-for="FundTransfer.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

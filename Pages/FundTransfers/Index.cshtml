@@ -1,0 +1,55 @@
+﻿@page
+@model Ristysoft.CashFlow.Pages.FundTransfers.IndexModel
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Fund Transfers</h1>
+
+<p>
+	<a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ItemList.Items[0].Date)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ItemList.Items[0].From)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ItemList.Items[0].To)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ItemList.Items[0].Amount)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.ItemList.Items)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Date)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.From.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.To.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Amount)
+				</td>
+				<td>
+					<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+					<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+@(await Html.RenderComponentAsync<Pager>(RenderMode.Static, new { PageModel = Model.ItemList }))

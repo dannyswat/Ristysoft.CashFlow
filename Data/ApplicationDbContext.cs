@@ -22,6 +22,8 @@ namespace Ristysoft.CashFlow.Data
 
 		public DbSet<RevenueType> RevenueTypes { get; set; }
 
+		public DbSet<FundTransfer> FundTransfers { get; set; }
+
 		public DbSet<Fund> Funds { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
@@ -50,6 +52,18 @@ namespace Ristysoft.CashFlow.Data
 				.HasOne(r => r.ReceivedBy)
 				.WithMany()
 				.HasForeignKey(r => r.ReceivedByFundId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			builder.Entity<FundTransfer>()
+				.HasOne(r => r.From)
+				.WithMany()
+				.HasForeignKey(r => r.FromFundId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			builder.Entity<FundTransfer>()
+				.HasOne(r => r.To)
+				.WithMany()
+				.HasForeignKey(r => r.ToFundId)
 				.OnDelete(DeleteBehavior.Restrict);
 		}
 
