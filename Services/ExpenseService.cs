@@ -124,19 +124,19 @@ namespace Ristysoft.CashFlow.Services
             switch (sort)
             {
                 case nameof(Expense.Date) + "_desc":
-                    qry = qry.OrderByDescending(r => r.Date);
+                    qry = qry.OrderByDescending(r => r.Date).ThenByDescending(r => r.Id);
                     break;
                 case nameof(Expense.Date):
-                    qry = qry.OrderBy(r => r.Date);
+                    qry = qry.OrderBy(r => r.Date).ThenBy(r => r.Id);
                     break;
                 case nameof(Expense.ExpenseType):
-                    qry = qry.OrderBy(r => r.ExpenseType.Name);
+                    qry = qry.OrderBy(r => r.ExpenseType.Name).ThenByDescending(r => r.Id);
                     break;
                 case nameof(Expense.PaidBy):
-                    qry = qry.OrderBy(r => r.PaidBy.Name);
+                    qry = qry.OrderBy(r => r.PaidBy.Name).ThenByDescending(r => r.Id);
                     break;
                 default:
-                    qry = qry.OrderByDescending(r => r.Date);
+                    qry = qry.OrderByDescending(r => r.Date).ThenByDescending(r => r.Id);
                     break;
             }
         }
