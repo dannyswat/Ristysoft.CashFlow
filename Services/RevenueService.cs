@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Ristysoft.CashFlow.Services
 {
-	public class RevenueService
-	{
+    public class RevenueService
+    {
         readonly ApplicationDbContext _context;
         public RevenueService(ApplicationDbContext dbContext)
         {
@@ -70,20 +70,18 @@ namespace Ristysoft.CashFlow.Services
 
             _context.Attach(Revenue).State = EntityState.Modified;
 
+            if (origRevenue.ReceivedByFundId != Revenue.ReceivedByFundId)
+            {
+                var origFund = await _context.Funds.FindAsync(origRevenue.ReceivedByFundId);
+                var fund = await _context.Funds.FindAsync(Revenue.ReceivedByFundId);
+                fund.Balance += Revenue.Amount;
+                origFund.Balance -= origRevenue.Amount;
+            }
+            else
             if (origRevenue.Amount != Revenue.Amount)
             {
                 var fund = await _context.Funds.FindAsync(Revenue.ReceivedByFundId);
-
-                if (origRevenue.ReceivedByFundId == Revenue.ReceivedByFundId || origRevenue.Amount == 0)
-                {
-                    fund.Balance += Revenue.Amount - origRevenue.Amount;
-                }
-                else
-                {
-                    var origFund = await _context.Funds.FindAsync(origRevenue.ReceivedByFundId);
-                    fund.Balance += Revenue.Amount;
-                    origFund.Balance -= origRevenue.Amount;
-                }
+                fund.Balance += Revenue.Amount - origRevenue.Amount;
             }
 
             await _context.SaveChangesAsync();
